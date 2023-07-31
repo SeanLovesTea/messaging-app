@@ -1,6 +1,12 @@
+require('dotenv').config()
 const express = require('express')
 const expressLayouts = require('express-ejs-layouts')
+const connectDb = require('./config/mongodb')
+
 const app = express()
+
+connectDb()
+
 
 app.use(expressLayouts)
 app.set('view engine', 'ejs')
