@@ -8,14 +8,13 @@ const app = express()
 
 connectDb()
 
+const mainRoutes = require('./routes/route')
 
 app.use(expressLayouts)
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'views'))
 app.use(express.static(path.join(__dirname + '/public')))
+app.use('/', mainRoutes)
 
-app.get('/', (req, res) => {
-  res.render('index')
-})
 
 app.listen(5000, () => console.log('App running on port 5000'))

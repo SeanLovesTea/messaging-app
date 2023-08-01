@@ -1,15 +1,22 @@
-body {
+body, html, h1 {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+body {
   height: 100vh;
 }
 .main {
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;
-  height: 100%;
+  height:100%;
 }
-
+.header {
+  background-color: rgb(182, 158, 128);
+  color: rgb(59, 33, 33);
+  text-align: center;
+  padding: 1rem;
+}
 
 /* chatwindow css */
 .chatWindow {
@@ -63,8 +70,10 @@ body {
 }
 .chats {
   display: flex;
-  border: 1px solid darkblue;
+  border-bottom: 1px solid darkblue;
   padding: .5rem;
+  margin: .5rem;
+  background-color: rgb(175, 176, 228);
 }
 .chats__avatar {
   width: 50px;
@@ -82,7 +91,4 @@ body {
 }
 .infoSidebar {
   background-color: grey;
-}
-h1 {
-  color: red;
 }
