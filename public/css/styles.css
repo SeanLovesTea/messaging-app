@@ -1,0 +1,23 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  height: 100vh;
+}
+.main {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  height: 100%;
+}
+.chatWindow {
+  background-color: antiquewhite;
+}
+.friendList {
+  background-color: rgb(107, 109, 219);
+}
+.infoSidebar {
+  background-color: grey;
+}
+h1 {
+  color: red;
+}
