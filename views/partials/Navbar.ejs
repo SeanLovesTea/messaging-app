@@ -12,5 +12,9 @@
       <input name="password" type="password" />
       <button>Log In</button>
     </form>
+    <div class="form-error"><% if (errors) { %>
+      <%= errors %>
+    </div>
+    <% } %>
   <%}%>
 </div>

@@ -4,8 +4,8 @@ const User = require('../models/User')
 const passport = require('passport')
 
 router.get('/', (req, res) => {
-  // res.render('index', { user: req.user })
   res.render('index')
+  // res.render('index', )
 })
 
 router.get('/sign-up', (req, res) => {
@@ -24,10 +24,15 @@ router.post('/sign-up', async (req, res, next) => {
     return next(error)
   }
 })
+router.get('/log-in', (req, res) => {
+  res.render('login')
+})
 router.post('/log-in', passport.authenticate('local', {
   successRedirect: '/',
-  failureRedirect: '/'
+  failureRedirect: '/',
+  failureFlash: true
 }))
+ 
 
 router.get('/log-out', (req, res, next) => {
   req.logout(function (err) {

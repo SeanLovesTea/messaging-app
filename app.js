@@ -7,6 +7,7 @@ const session = require('express-session')
 const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy
 const User = require('./models/User')
+const flash = require('connect-flash')
 
 
 const app = express()
@@ -20,10 +21,15 @@ app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'views'))
 app.use(express.static(path.join(__dirname + '/public')))
 
-app.use(session({ secret: "cats", resave: false, saveUninitialized: true }))
+app.use(session({ secret: "cats", resave: false, saveUninitialized: false }))
 app.use(express.urlencoded({ extended: false}))
 app.use(passport.initialize())
 app.use(passport.session())
+app.use(flash())
+app.use(function(req, res, next){
+  res.locals.errors = req.flash("error");
+  next();
+})
 
 passport.use(
   new LocalStrategy(async(username, password, done) => {
