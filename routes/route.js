@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const User = require('../models/User')
 const passport = require('passport')
+const bcyrpt = require('bcryptjs')
 
 router.get('/', (req, res) => {
   res.render('index')
@@ -13,13 +14,22 @@ router.get('/sign-up', (req, res) => {
 })
 
 router.post('/sign-up', async (req, res, next) => {
+  
   try {
-    const user = new User({
-      username: req.body.username,
-      password: req.body.password
+    const username = req.body.username
+    const password = req.body.password
+    bcyrpt.hash(password, 10, async (err, hashedPassword) => {
+      if (err) {
+        return next(err)
+      }
+      const user = new User({
+        username: username,
+        password: hashedPassword
+      })
+      const result = await user.save()
+      res.redirect('/')
     })
-    const result = await user.save()
-    res.redirect('/')
+   
   } catch (error) {
     return next(error)
   }
