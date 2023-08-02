@@ -9,13 +9,15 @@ const LocalStrategy = require('passport-local').Strategy
 const User = require('./models/User')
 const flash = require('connect-flash')
 const bcrypt = require('bcryptjs')
+const bodyParser = require('body-parser')
 
 
 const app = express()
 
 connectDb()
 
-const mainRoutes = require('./routes/route')
+const mainRoutes = require('./routes/routes')
+const messagesRoutes = require('./routes/messagesController')
 
 app.use(expressLayouts)
 app.set('view engine', 'ejs')
@@ -70,5 +72,6 @@ app.use(function(req, res, next) {
   next()
 })
 app.use('/', mainRoutes)
+app.use('/messages', messagesRoutes)
 
 app.listen(5000, () => console.log('App running on port 5000'))

@@ -3,8 +3,10 @@ const router = express.Router()
 const User = require('../models/User')
 const passport = require('passport')
 const bcyrpt = require('bcryptjs')
+const usersController = require('../controllers/usersController')
 
-router.get('/', (req, res) => {
+router.get('/',usersController.get_users, (req, res) => {
+
   res.render('index')
   // res.render('index', )
 })

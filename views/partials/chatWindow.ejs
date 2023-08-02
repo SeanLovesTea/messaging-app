@@ -1,5 +1,8 @@
 <div class="chatWindow">
   <h2>Chat Window</h2>
+  <% if (currentUser) {
+
+  } %>
   <div class="message">
     <div class="message__avatar"><img src="./images/default.png" alt=""></div>
     <div class="message__box">
@@ -7,8 +10,10 @@
       <p class="message__message"> Hey there what's up?</p>
     </div>
   </div>
-  <div class="message__form">
-    <form action="" method="">
+  <% if (receiverId == null) { %>
+  <% }else { %>
+    <div class="message__form">
+    <form action="/messages/<%= receiverId %>/send" method="POST">
       <input 
       type="text" 
       name="post-message" 
@@ -18,3 +23,5 @@
     </form>
   </div>
 </div>
+<%  } %>
+ 

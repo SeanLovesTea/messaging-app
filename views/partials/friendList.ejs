@@ -1,5 +1,16 @@
 <div class="friendList">
   <h2>Friend List</h2>
+  <% userData.forEach(user => { %>
+    <a href="/messages/<%= user._id %>">
+      <div class="chats" onclick={getReceiver}>
+        <div class="chats__avatar"><img src="./images/default.png" alt=""></div>
+        <div class="chats__box">
+          <div class="chats__name"><%= user.username %></div>
+          <div class="chats__message">Hey, you are the best</div>
+        </div>
+      </div>
+    </a>
+  <% }) %>
   <div class="chats">
     <div class="chats__avatar"><img src="./images/default.png" alt=""></div>
     <div class="chats__box">
